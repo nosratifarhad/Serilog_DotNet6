@@ -1,5 +1,4 @@
-# Serilog_DotNet6
-
+# Serilog In .Net 6
 
 ### First you need to install the following packages :
 
