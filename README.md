@@ -62,42 +62,15 @@ public class ThreadIdEnricher : ILogEventEnricher
 // if you want add options from configuration , so uncomment lower code and comment top code .
 //.WriteTo.Console()
 ```
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation4.jpg)
 ### for write logs on json file 
 ```csharp
 //...
 .WriteTo.File(new CompactJsonFormatter(), "jsonLog.json", shared: true)
 //..
 ```
-![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation5.png)
-```json
-  {
-    "@t": "2023-05-03T17:18:18.9417843Z",
-    "@mt": "request from userid {@userid}",
-    "userid": 1,
-    "SourceContext": "ECommerceSerilog.Middlewares.RequestMiddleware",
-    "RequestId": "0HMQBV9D6M52R:0000000B",
-    "RequestPath": "/api/products",
-    "ConnectionId": "0HMQBV9D6M52R",
-    "ThreadId": 5
-  },
-  {
-    "@t": "2023-05-03T17:18:18.9520927Z",
-    "@mt": "REQUEST HttpMethod: {@HttpMethod}",
-    "HttpMethod": {
-      "Method": "GET",
-      "Path": {
-        "Value": "/api/products",
-        "HasValue": true,
-        "$type": "PathString"
-      }
-    },
-    "SourceContext": "ECommerceSerilog.Middlewares.RequestMiddleware",
-    "RequestId": "0HMQBV9D6M52R:0000000B",
-    "RequestPath": "/api/products",
-    "ConnectionId": "0HMQBV9D6M52R",
-    "ThreadId": 5
-  },
-```
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation5.jpg)
+
 ### for write logs on txt File , your should set options from hard coding
 ```csharp
 .WriteTo.File(
@@ -106,6 +79,8 @@ public class ThreadIdEnricher : ILogEventEnricher
 // if you want add options from configuration ,so uncomment lower code and comment top code .
 //.WriteTo.File("LogFiles/diagnostics.txt")
 ```
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation3.jpg)
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation2.jpg)
 ### for write logs on sql server , your should set options from hard coding
 ```csharp
 .WriteTo.MSSqlServer("Data Source=(localdb)\\MSSqlLocalDb;Initial Catalog=LoggingDb;persist security info=True;",
@@ -117,8 +92,7 @@ public class ThreadIdEnricher : ILogEventEnricher
     })
 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
 ```
-![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation5.png)
-
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation.jpg)
 ### more ...
 ```csharp
 .WriteTo.Seq("http://localhost:5341",
@@ -126,6 +100,6 @@ public class ThreadIdEnricher : ILogEventEnricher
 
 .AuditTo.File("LogFiles/diagnostics.txt")
 ```
-### coming soon set to kibana in docker
-....
+# coming soon set to kibana in docker ;)
+
 
