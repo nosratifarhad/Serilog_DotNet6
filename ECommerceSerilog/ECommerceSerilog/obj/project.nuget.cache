@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "1tpY01Ixkp6M6Yj0dwbeXOC3ESz9L0qHDgcGEE2eDmJQovAQms6mxwQq3ntTIF3zeCI4RMMSp4y3lK7r7jl5iA==",
+  "success": true,
+  "projectFilePath": "D:\\github\\Serilog_DotNet6\\ECommerceSerilog\\ECommerceSerilog\\ECommerceSerilog.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\f_nosrati\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\f_nosrati\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\f_nosrati\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\f_nosrati\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\f_nosrati\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\f_nosrati\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
