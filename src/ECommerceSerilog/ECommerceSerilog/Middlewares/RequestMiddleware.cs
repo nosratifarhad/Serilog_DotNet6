@@ -18,7 +18,8 @@ namespace ECommerceSerilog.Middlewares
         {
             try
             {
-                _logger.LogInformation("request from userId {@userid}", 1);
+                int userid = 1;//get user Id
+                _logger.LogInformation("request from userId {@userid}", userid);
 
                 _logger.LogInformation("REQUEST HttpMethod: {@HttpMethod}",
                     new { context.Request.Method, context.Request.Path });
