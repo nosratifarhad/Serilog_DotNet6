@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1tpY01Ixkp6M6Yj0dwbeXOC3ESz9L0qHDgcGEE2eDmJQovAQms6mxwQq3ntTIF3zeCI4RMMSp4y3lK7r7jl5iA==",
+  "dgSpecHash": "T+TJBMy6Xyr4Cf8Q+ZIhUstMlwxAv/kwZ+VOR8RT/iIUHzBdEDdSNPMLPWQ1kh73JBDreMLu4fdZ5hcIOhdeFw==",
   "success": true,
-  "projectFilePath": "D:\\github\\Serilog_DotNet6\\ECommerceSerilog\\ECommerceSerilog\\ECommerceSerilog.csproj",
+  "projectFilePath": "D:\\github\\Serilog_DotNet6\\src\\ECommerceSerilog\\ECommerceSerilog\\ECommerceSerilog.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\f_nosrati\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\f_nosrati\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

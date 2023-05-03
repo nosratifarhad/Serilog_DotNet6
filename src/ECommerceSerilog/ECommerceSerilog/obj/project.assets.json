@@ -230,11 +230,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\github\\Serilog_DotNet6\\ECommerceSerilog\\ECommerceSerilog\\ECommerceSerilog.csproj",
+      "projectUniqueName": "D:\\github\\Serilog_DotNet6\\src\\ECommerceSerilog\\ECommerceSerilog\\ECommerceSerilog.csproj",
       "projectName": "ECommerceSerilog",
-      "projectPath": "D:\\github\\Serilog_DotNet6\\ECommerceSerilog\\ECommerceSerilog\\ECommerceSerilog.csproj",
+      "projectPath": "D:\\github\\Serilog_DotNet6\\src\\ECommerceSerilog\\ECommerceSerilog\\ECommerceSerilog.csproj",
       "packagesPath": "C:\\Users\\f_nosrati\\.nuget\\packages\\",
-      "outputPath": "D:\\github\\Serilog_DotNet6\\ECommerceSerilog\\ECommerceSerilog\\obj\\",
+      "outputPath": "D:\\github\\Serilog_DotNet6\\src\\ECommerceSerilog\\ECommerceSerilog\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
