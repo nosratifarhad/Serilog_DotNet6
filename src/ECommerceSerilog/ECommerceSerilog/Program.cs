@@ -25,13 +25,14 @@ Log.Logger = new LoggerConfiguration()
 
     // For Write Logs in Console And Set Options From Hear , If You Dont Need , Remove this Line.
     .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
-    // For Write Logs in Console And Set Options From "ConfigurationBuilder" , If You Dont Need , Remove this Line.
-    //.WriteTo.Console()
+     // For Write Logs in Console And Set Options From "ConfigurationBuilder" , If You Dont Need , Remove this Line.
+     //.WriteTo.Console()
 
-    // For Write Logs in Json File , If You Dont Need , Remove this Line.
-    //.WriteTo.File(new CompactJsonFormatter(), "jsonLog.json", shared: true)
+     // For Write Logs in Json File , If You Dont Need , Remove this Line.
+     //.WriteTo.File(new CompactJsonFormatter(), "jsonLog.json", shared: true)
 
      // For Write Logs in txt File And Set Options From Hear , If You Dont Need , Remove this Line.
+     .WriteTo.File("LogFiles/diagnostics.txt")
      .WriteTo.File(
        System.IO.Path.Combine("LogFiles", "diagnostics.txt"),
        rollingInterval: RollingInterval.Day,
