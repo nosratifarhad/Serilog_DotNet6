@@ -1,10 +1,8 @@
-﻿using ECommerceSerilog.Dtos;
-using ECommerceSerilog.Entitys;
-using ECommerceSerilog.Repositorys.ReadRepository;
-using ECommerceSerilog.Repositorys.WriteRepository;
-using ECommerceSerilog.Services.Contract;
+﻿using ECommerceSerilog.Services.Contract;
 using ECommerceSerilog.InputModels.ProductInputModels;
 using ECommerceSerilog.ViewModels.ProductViewModels;
+using ECommerceSerilog.Domain.Entitys;
+using ECommerceSerilog.Domain;
 
 namespace ECommerceSerilog.Services;
 
@@ -34,20 +32,20 @@ public class ProductService : IProductService
     public async Task<ProductModel> GetProduct(int productId)
     {
 
-        var productDto = await _productReadRepository.GetProduct(productId).ConfigureAwait(false);
+        var product = await _productReadRepository.GetProduct(productId).ConfigureAwait(false);
 
-        var productViewModel = CreateProductViewModelFromProductDto(productDto);
+        var productViewModel = CreateProductViewModelFromProduct(product);
 
         return productViewModel;
     }
 
     public async Task<IEnumerable<ProductModel>> GetProducts()
     {
-        var productDtos = await _productReadRepository.GetProducts().ConfigureAwait(false);
-        if (productDtos == null || productDtos.Count() == 0)
+        var products = await _productReadRepository.GetProducts().ConfigureAwait(false);
+        if (products == null || products.Count() == 0)
             return Enumerable.Empty<ProductModel>();
 
-        var productViewModels = CreateProductViewModelsFromProductDtos(productDtos);
+        var productViewModels = CreateProductViewModelsFromProducts(products);
 
         return productViewModels;
     }
@@ -58,10 +56,9 @@ public class ProductService : IProductService
 
         ValidateProductTitle(inputModel.ProductTitle);
 
-        var productEntoty = CreateProductEntityFromInputModel(inputModel);
+        var product= CreateProductEntityFromInputModel(inputModel);
 
-
-        return await _productWriteRepository.CreateProductAsync(productEntoty).ConfigureAwait(false);
+        return await _productWriteRepository.CreateProductAsync(product).ConfigureAwait(false);
     }
 
     public async Task UpdateProductAsync(UpdateProductInputModel inputModel)
@@ -72,9 +69,9 @@ public class ProductService : IProductService
 
         await IsExistProduct(int.Parse(inputModel.ProductId)).ConfigureAwait(false);
 
-        var productEntoty = CreateProductEntityFromInputModel(inputModel);
+        var product = CreateProductEntityFromInputModel(inputModel);
 
-        await _productWriteRepository.UpdateProductAsync(productEntoty).ConfigureAwait(false);
+        await _productWriteRepository.UpdateProductAsync(product).ConfigureAwait(false);
     }
 
     public async Task DeleteProductAsync(int productId)
@@ -99,42 +96,41 @@ public class ProductService : IProductService
     private Product CreateProductEntityFromInputModel(UpdateProductInputModel inputModel)
         => new Product(int.Parse(inputModel.ProductId), inputModel.ProductName, inputModel.ProductTitle, inputModel.ProductDescription, inputModel.MainImageName, inputModel.MainImageTitle, inputModel.MainImageUri, inputModel.IsExisting, inputModel.IsFreeDelivery, inputModel.Weight);
 
-    private ProductModel CreateProductViewModelFromProductDto(ProductDto dto)
+    private ProductModel CreateProductViewModelFromProduct(Product product)
         => new ProductModel()
         {
-            ProductId = dto.ProductId.ToString(),
-            ProductName = dto.ProductName,
-            ProductTitle = dto.ProductTitle,
-            ProductDescription = dto.ProductDescription,
-            MainImageName = dto.MainImageName,
-            MainImageTitle = dto.MainImageTitle,
-            MainImageUri = dto.MainImageUri,
-            IsExisting = dto.IsExisting,
-            IsFreeDelivery = dto.IsFreeDelivery,
-            Weight = dto.Weight
+            ProductId = product.ProductId.ToString(),
+            ProductName = product.ProductName,
+            ProductTitle = product.ProductTitle,
+            ProductDescription = product.ProductDescription,
+            MainImageName = product.MainImageName,
+            MainImageTitle = product.MainImageTitle,
+            MainImageUri = product.MainImageUri,
+            IsExisting = product.IsExisting,
+            IsFreeDelivery = product.IsFreeDelivery,
+            Weight = product.Weight
         };
 
-    private IEnumerable<ProductModel> CreateProductViewModelsFromProductDtos(IEnumerable<ProductDto> dtos)
+    private IEnumerable<ProductModel> CreateProductViewModelsFromProducts(IEnumerable<Product> products)
     {
         ICollection<ProductModel> productViewModels = new List<ProductModel>();
 
-        foreach (var ProductDto in dtos)
+        foreach (var Product in products)
             productViewModels.Add(
                  new ProductModel()
                  {
 
-                     ProductId = ProductDto.ProductId.ToString(),
-                     ProductName = ProductDto.ProductName,
-                     ProductTitle = ProductDto.ProductTitle,
-                     ProductDescription = ProductDto.ProductDescription,
-                     MainImageName = ProductDto.MainImageName,
-                     MainImageTitle = ProductDto.MainImageTitle,
-                     MainImageUri = ProductDto.MainImageUri,
-                     IsExisting = ProductDto.IsExisting,
-                     IsFreeDelivery = ProductDto.IsFreeDelivery,
-                     Weight = ProductDto.Weight
+                     ProductId = Product.ProductId.ToString(),
+                     ProductName = Product.ProductName,
+                     ProductTitle = Product.ProductTitle,
+                     ProductDescription = Product.ProductDescription,
+                     MainImageName = Product.MainImageName,
+                     MainImageTitle = Product.MainImageTitle,
+                     MainImageUri = Product.MainImageUri,
+                     IsExisting = Product.IsExisting,
+                     IsFreeDelivery = Product.IsFreeDelivery,
+                     Weight = Product.Weight
                  });
-
 
         return productViewModels;
     }
@@ -150,37 +146,6 @@ public class ProductService : IProductService
         if (string.IsNullOrEmpty(productTitle) || string.IsNullOrWhiteSpace(productTitle))
             throw new ArgumentNullException(nameof(productTitle), "Product Title must not be empty");
     }
-
-
-    private ProductModel ToProductModel(UpdateProductInputModel inputModel)
-        => new ProductModel()
-        {
-            ProductId = inputModel.ProductId,
-            ProductName = inputModel.ProductName,
-            ProductTitle = inputModel.ProductTitle,
-            ProductDescription = inputModel.ProductDescription,
-            MainImageName = inputModel.MainImageName,
-            MainImageTitle = inputModel.MainImageTitle,
-            MainImageUri = inputModel.MainImageUri,
-            IsExisting = inputModel.IsExisting,
-            IsFreeDelivery = inputModel.IsFreeDelivery,
-            Weight = inputModel.Weight
-
-        };
-
-    private ProductModel ToProductModel(CreateProductInputModel inputModel)
-        => new ProductModel()
-        {
-            ProductName = inputModel.ProductName,
-            ProductTitle = inputModel.ProductTitle,
-            ProductDescription = inputModel.ProductDescription,
-            MainImageName = inputModel.MainImageName,
-            MainImageTitle = inputModel.MainImageTitle,
-            MainImageUri = inputModel.MainImageUri,
-            IsExisting = inputModel.IsExisting,
-            IsFreeDelivery = inputModel.IsFreeDelivery,
-        };
-
 
     #endregion Private
 }

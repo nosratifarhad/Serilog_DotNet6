@@ -1,17 +1,17 @@
-﻿using ECommerceSerilog.Dtos;
-using ECommerceSerilog.Repositorys.ReadRepository;
+﻿using ECommerceSerilog.Domain;
+using ECommerceSerilog.Domain.Entitys;
 
-namespace ECommerceSerilog.Repositorys.Info;
+namespace ECommerceSerilog.Infra.Repositories.ReadRepositories.ProductReadRepositories;
 
 public class ProductReadRepository : IProductReadRepository
 {
-    public async Task<ProductDto> GetProduct(int productId)
+    public async Task<Product> GetProduct(int productId)
     {
         await Task.Delay(100);
         return null;
     }
 
-    public async Task<IEnumerable<ProductDto>> GetProducts()
+    public async Task<IEnumerable<Product>> GetProducts()
     {
         await Task.Delay(100);
         return null;

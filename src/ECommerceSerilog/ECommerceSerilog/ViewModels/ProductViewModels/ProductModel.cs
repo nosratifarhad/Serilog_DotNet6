@@ -21,5 +21,5 @@ public class ProductModel
 
     public bool IsExisting { get; set; }
 
-    public int Weight { get; set; }
+    public int? Weight { get; set; }
 }

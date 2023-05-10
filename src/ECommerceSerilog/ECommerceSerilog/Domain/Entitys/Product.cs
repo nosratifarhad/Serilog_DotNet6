@@ -1,4 +1,4 @@
-﻿namespace ECommerceSerilog.Entitys;
+﻿namespace ECommerceSerilog.Domain.Entitys;
 
 public class Product
 {
