@@ -1,7 +1,8 @@
-﻿using ECommerceSerilog.Entitys;
-using ECommerceSerilog.Repositorys.WriteRepository;
+﻿using ECommerceSerilog.Domain;
+using ECommerceSerilog.Domain.Entitys;
 
-namespace ECommerceSerilog.Repositorys.Info;
+namespace ECommerceSerilog.Infra.Repositories.WriteRepositories.ProductWriteRepositories;
+
 public class ProductWriteRepository : IProductWriteRepository
 {
     public async Task<int> CreateProductAsync(Product product)

@@ -1,9 +1,8 @@
-﻿using ECommerceSerilog.Helpers;
-using ECommerceSerilog.Repositorys.Info;
-using ECommerceSerilog.Repositorys.ReadRepository;
-using ECommerceSerilog.Repositorys.WriteRepository;
-using ECommerceSerilog.Services.Contract;
+﻿using ECommerceSerilog.Services.Contract;
 using ECommerceSerilog.Services;
+using ECommerceSerilog.Domain;
+using ECommerceSerilog.Infra.Repositories.WriteRepositories.ProductWriteRepositories;
+using ECommerceSerilog.Infra.Repositories.ReadRepositories.ProductReadRepositories;
 
 namespace ECommerceSerilog
 {

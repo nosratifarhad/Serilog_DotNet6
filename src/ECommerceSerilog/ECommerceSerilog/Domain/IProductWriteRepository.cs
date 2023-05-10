@@ -1,6 +1,6 @@
-﻿using ECommerceSerilog.Entitys;
+﻿using ECommerceSerilog.Domain.Entitys;
 
-namespace ECommerceSerilog.Repositorys.WriteRepository;
+namespace ECommerceSerilog.Domain;
 
 public interface IProductWriteRepository
 {
