@@ -8,18 +8,26 @@ public class ProductReadRepository : IProductReadRepository
     public async Task<Product> GetProduct(int productId)
     {
         await Task.Delay(100);
-        return null;
+
+        return new Product(string.Empty, string.Empty, null, null, null, null, false, false, null);
     }
 
     public async Task<IEnumerable<Product>> GetProducts()
     {
         await Task.Delay(100);
-        return null;
+
+        return new List<Product>()
+        {
+            new Product(string.Empty, string.Empty, null, null, null, null, false, false, null),
+            new Product(string.Empty, string.Empty, null, null, null, null, false, false, null),
+            new Product(string.Empty, string.Empty, null, null, null, null, false, false, null)
+        };
     }
 
     public async Task<bool> IsExistProduct(int productId)
     {
         await Task.Delay(100);
+
         return true;
     }
 }

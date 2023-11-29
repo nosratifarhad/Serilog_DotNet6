@@ -18,7 +18,7 @@ public class ProductService : IProductService
     #region Ctor
 
     public ProductService(
-        IProductReadRepository productReadRepository, 
+        IProductReadRepository productReadRepository,
         IProductWriteRepository productWriteRepository)
     {
         _productReadRepository = productReadRepository;
@@ -31,7 +31,6 @@ public class ProductService : IProductService
 
     public async Task<ProductModel> GetProduct(int productId)
     {
-
         var product = await _productReadRepository.GetProduct(productId).ConfigureAwait(false);
 
         var productViewModel = CreateProductViewModelFromProduct(product);
@@ -56,7 +55,7 @@ public class ProductService : IProductService
 
         ValidateProductTitle(inputModel.ProductTitle);
 
-        var product= CreateProductEntityFromInputModel(inputModel);
+        var product = CreateProductEntityFromInputModel(inputModel);
 
         return await _productWriteRepository.CreateProductAsync(product).ConfigureAwait(false);
     }
