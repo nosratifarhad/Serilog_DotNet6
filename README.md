@@ -20,23 +20,31 @@ Log.Logger = new LoggerConfiguration()
         //...
         // Set Configuration Between two Line
         //...
-        .CreateLogger();
+        .CreateLogger(); //OR .CreateBootstrapLogger();
+
 ```
 ### your can add configs from 'appsettings.json' OR Hard Code
 ### if you want user 'appsettings.json' you must add following code before create instance from "LoggerConfiguration"
 ```csharp
 var configuration = new ConfigurationBuilder()
       .SetBasePath(Directory.GetCurrentDirectory())
-     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+      .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
       .Build();
 ```
-### now you have all configs in variable name 'configuration' and you can add to following code
+
+### You can use this command to set all the configurations specified in the appsettings.json file at once, eliminating the need to add the following items separately.
 > this code should be added between the two lines above.
 ```csharp
-.ReadFrom.Configuration(configuration)
+Log.Logger = new LoggerConfiguration()
+
+    .ReadFrom.Configuration(configuration)
+
+    .CreateLogger();
 ```
-### for get ThreadId and write in logs , you use this code.
-> this code should be added between the two lines above code.
+### Note: If you use this command, there is no need to add the items mentioned below separately.
+
+### If you want to add ThreadId to field loggers, you can utilize this method similar to how threads are used.
+// If You Dont Need , Remove this Line.
 ```csharp
 Log.Logger = new LoggerConfiguration()
     //...
@@ -55,50 +63,107 @@ public class ThreadIdEnricher : ILogEventEnricher
     }
 }
 ```
-### for write logs on console , your should set options from hard coding
+### To write logs to the console, you can use the following syntax.
+// If You Dont Need , Remove this Line.
 ```csharp
-.WriteTo.Console(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
-// if you want add options from configuration , so uncomment lower code and comment top code .
 //.WriteTo.Console()
+// OR
+.WriteTo.Console(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
 ```
+ئثهد=
+### For Write Logs in Json File , If You Dont Need , Remove this Line.
+=======
 ![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation4.jpg)
 ### for write logs on json file 
+مسن
 ```csharp
 //...
-.WriteTo.File(new CompactJsonFormatter(), "jsonLog.json", shared: true)
+.WriteTo.File(new CompactJsonFormatter(), "log/jsonLog.json", shared: true)
 //..
 ```
+دو
+![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation2.png)
+```json
+{...},
+{
+  "Timestamp": "2023-11-29T19:39:08.4114614+03:30",
+  "Level": "Information",
+  "MessageTemplate": "HTTP {RequestMethod} {RequestPath} responded {StatusCode} in {Elapsed:0.0000} ms",
+  "Properties": {
+    "RequestMethod": "POST",
+    "RequestPath": "/api/products",
+    "StatusCode": 201,
+    "Elapsed": 185.8472,
+    "SourceContext": "Serilog.AspNetCore.RequestLoggingMiddleware",
+    "RequestId": "0HMVGULPKORR8:00000021",
+    "ConnectionId": "0HMVGULPKORR8",
+    "Application": "ECommerceSerilog"
+  },
+  "Renderings": {
+    "Elapsed": [
+      {
+        "Format": "0.0000",
+        "Rendering": "185.8472"
+      }
+    ]
+  }
+}
+
+```
+### // For Write Logs in txt File And Set Options From Hear , If You Dont Need , Remove this Line.
+=======
 ![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation5.jpg)
 
 ### for write logs on txt File , your should set options from hard coding
+دو
 ```csharp
-.WriteTo.File(
-       "LogFiles/diagnostics.txt",
-       outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
-// if you want add options from configuration ,so uncomment lower code and comment top code .
-//.WriteTo.File("LogFiles/diagnostics.txt")
+.WriteTo.File("log/diagnostics.txt")
+// OR
+//.WriteTo.File(
+//     Path.Combine("log", "diagnostics.txt"),
+//     rollingInterval: RollingInterval.Day,
+//     fileSizeLimitBytes: 10 * 1024 * 1024,
+//     retainedFileCountLimit: 2,
+//     rollOnFileSizeLimit: true,
+//     shared: true,
+//     flushToDiskInterval: TimeSpan.FromSeconds(1),
+//     outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
 ```
+دو
+### // For Show Logs In Serilog pannel And Set Options From Hear , If You Dont Need , Remove this Line.
+=======
 ![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation3.jpg)
 ![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation2.jpg)
 ### for write logs on sql server , your should set options from hard coding
+دو
 ```csharp
-.WriteTo.MSSqlServer("Data Source=(localdb)\\MSSqlLocalDb;Initial Catalog=LoggingDb;persist security info=True;",
-    new MSSqlServerSinkOptions
-    {
-        TableName = "Logs",
-        SchemaName = "dbo",
-        AutoCreateSqlTable = true
-    })
-.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+.WriteTo.Seq("http://localhost:5341", Serilog.Events.LogEventLevel.Warning)
 ```
+دو
+### // For Write Logs in txt File And Set Options From "ConfigurationBuilder" , If You Dont Need , Remove this Line.
+=======
 ![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation.jpg)
 ### more ...
+دو
 ```csharp
-.WriteTo.Seq("http://localhost:5341",
-    Serilog.Events.LogEventLevel.Warning)
-
-.AuditTo.File("LogFiles/diagnostics.txt")
+.AuditTo.File("log/diagnostics.txt")
 ```
+### // For Write Logs in Sql Database And Set Options From Hear , If You Dont Need , Remove this Line.
+
+```csharp
+.WriteTo.MSSqlServer("Data Source=(localdb)\\MSSqlLocalDb;Initial Catalog=LoggingDb;persist security info=True;",
+                    new MSSqlServerSinkOptions
+                    {
+                        TableName = "Logs",
+                        SchemaName = "dbo",
+                        AutoCreateSqlTable = true
+                    })
+.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+```
+دو
+![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation5.png)
+=======
 # coming soon set to kibana in docker ;)
 
+مین
 
