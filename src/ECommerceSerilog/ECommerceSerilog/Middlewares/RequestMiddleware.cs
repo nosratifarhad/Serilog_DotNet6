@@ -7,8 +7,8 @@ public class RequestMiddleware
 {
     public RequestDelegate requestDelegate;
     private readonly ILogger<RequestMiddleware> _logger;
-    public RequestMiddleware
-    (RequestDelegate requestDelegate, ILogger<RequestMiddleware> logger)
+
+    public RequestMiddleware(RequestDelegate requestDelegate, ILogger<RequestMiddleware> logger)
     {
         this.requestDelegate = requestDelegate;
         this._logger = logger;
@@ -19,6 +19,7 @@ public class RequestMiddleware
         try
         {
             int userid = 1;//get user Id
+
             _logger.LogInformation("request from userId {@userid}", userid);
 
             _logger.LogInformation("REQUEST HttpMethod: {@HttpMethod}",

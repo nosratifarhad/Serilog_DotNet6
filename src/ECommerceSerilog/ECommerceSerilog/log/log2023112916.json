@@ -1,0 +1,27 @@
+{
+  "Timestamp": "2023-11-29T16:24:56.4406227+03:30",
+  "Level": "Information",
+  "MessageTemplate": "GetProducts",
+  "Properties": {
+    "SourceContext": "ECommerce.Api.Controllers.ProductsController",
+    "ActionId": "7f5197f8-7217-4d2c-88ad-a682d93971a3",
+    "ActionName": "ECommerce.Api.Controllers.ProductsController.GetProducts (ECommerceSerilog)",
+    "RequestId": "0HMVGR9G8H7CL:0000001D",
+    "RequestPath": "/api/products",
+    "ConnectionId": "0HMVGR9G8H7CL",
+    "Application": "ECommerceSerilog"
+  }
+} {
+  "Timestamp": "2023-11-29T16:24:56.6056445+03:30",
+  "Level": "Information",
+  "MessageTemplate": "GetProducts successfully",
+  "Properties": {
+    "SourceContext": "ECommerce.Api.Controllers.ProductsController",
+    "ActionId": "7f5197f8-7217-4d2c-88ad-a682d93971a3",
+    "ActionName": "ECommerce.Api.Controllers.ProductsController.GetProducts (ECommerceSerilog)",
+    "RequestId": "0HMVGR9G8H7CL:0000001D",
+    "RequestPath": "/api/products",
+    "ConnectionId": "0HMVGR9G8H7CL",
+    "Application": "ECommerceSerilog"
+  }
+}
