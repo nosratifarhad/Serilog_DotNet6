@@ -37,6 +37,7 @@ public class Startup
         #endregion [ Infra - Data EventSourcing ]
 
         #endregion [ IOC ]
+
     }
 
     public void Configure(IApplicationBuilder app)
