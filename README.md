@@ -70,19 +70,12 @@ public class ThreadIdEnricher : ILogEventEnricher
 // OR
 .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
 ```
-ئثهد=
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation2.jpg)
+
 ### For Write Logs in Json File , If You Dont Need , Remove this Line.
-=======
-![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation4.jpg)
-### for write logs on json file 
-مسن
 ```csharp
-//...
 .WriteTo.File(new CompactJsonFormatter(), "log/jsonLog.json", shared: true)
-//..
 ```
-دو
-![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation2.png)
 ```json
 {...},
 {
@@ -108,16 +101,13 @@ public class ThreadIdEnricher : ILogEventEnricher
     ]
   }
 }
-
 ```
-### // For Write Logs in txt File And Set Options From Hear , If You Dont Need , Remove this Line.
-=======
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation3.jpg)
 ![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation5.jpg)
 
-### for write logs on txt File , your should set options from hard coding
-دو
+### For Write Logs in txt File And Set Options From Hear , If You Dont Need , Remove this Line.
 ```csharp
-.WriteTo.File("log/diagnostics.txt")
+//.WriteTo.File("log/diagnostics.txt")
 // OR
 //.WriteTo.File(
 //     Path.Combine("log", "diagnostics.txt"),
@@ -131,20 +121,11 @@ public class ThreadIdEnricher : ILogEventEnricher
 ```
 دو
 ### // For Show Logs In Serilog pannel And Set Options From Hear , If You Dont Need , Remove this Line.
-=======
-![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation3.jpg)
-![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation2.jpg)
-### for write logs on sql server , your should set options from hard coding
-دو
 ```csharp
 .WriteTo.Seq("http://localhost:5341", Serilog.Events.LogEventLevel.Warning)
 ```
 دو
-### // For Write Logs in txt File And Set Options From "ConfigurationBuilder" , If You Dont Need , Remove this Line.
-=======
-![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation.jpg)
-### more ...
-دو
+// For Write Logs in txt File And Set Options From "ConfigurationBuilder" , If You Dont Need , Remove this Line.
 ```csharp
 .AuditTo.File("log/diagnostics.txt")
 ```
@@ -160,10 +141,4 @@ public class ThreadIdEnricher : ILogEventEnricher
                     })
 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
 ```
-دو
-![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation5.png)
-=======
-# coming soon set to kibana in docker ;)
-
-مین
-
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation.jpg)
