@@ -3,9 +3,6 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var startup = new Startup(builder.Configuration);
-startup.ConfigureServices(builder.Services);
-
 #region [ Serilog Configs ]
 
 var configuration = new ConfigurationBuilder()
@@ -72,6 +69,10 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
+
+var startup = new Startup(builder.Configuration);
+startup.ConfigureServices(builder.Services);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -84,6 +85,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseSerilogRequestLogging();
 
 app.MapControllers();
 
