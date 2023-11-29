@@ -1,5 +1,4 @@
-# Serilog_DotNet6
-
+# Serilog In .Net 6
 
 ### First you need to install the following packages :
 
@@ -71,12 +70,18 @@ public class ThreadIdEnricher : ILogEventEnricher
 // OR
 .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
 ```
+ئثهد=
 ### For Write Logs in Json File , If You Dont Need , Remove this Line.
+=======
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation4.jpg)
+### for write logs on json file 
+مسن
 ```csharp
 //...
 .WriteTo.File(new CompactJsonFormatter(), "log/jsonLog.json", shared: true)
 //..
 ```
+دو
 ![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation2.png)
 ```json
 {...},
@@ -106,6 +111,11 @@ public class ThreadIdEnricher : ILogEventEnricher
 
 ```
 ### // For Write Logs in txt File And Set Options From Hear , If You Dont Need , Remove this Line.
+=======
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation5.jpg)
+
+### for write logs on txt File , your should set options from hard coding
+دو
 ```csharp
 .WriteTo.File("log/diagnostics.txt")
 // OR
@@ -119,11 +129,22 @@ public class ThreadIdEnricher : ILogEventEnricher
 //     flushToDiskInterval: TimeSpan.FromSeconds(1),
 //     outputTemplate: "{Timestamp:HH:mm} [{Level}] ({ThreadId}) {Message}{NewLine}{Exception}")
 ```
+دو
 ### // For Show Logs In Serilog pannel And Set Options From Hear , If You Dont Need , Remove this Line.
+=======
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation3.jpg)
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation2.jpg)
+### for write logs on sql server , your should set options from hard coding
+دو
 ```csharp
 .WriteTo.Seq("http://localhost:5341", Serilog.Events.LogEventLevel.Warning)
 ```
+دو
 ### // For Write Logs in txt File And Set Options From "ConfigurationBuilder" , If You Dont Need , Remove this Line.
+=======
+![My Remote Image](https://github.com/nosratifarhad/Serilog_DotNet6/blob/main/imgs/Annotation.jpg)
+### more ...
+دو
 ```csharp
 .AuditTo.File("log/diagnostics.txt")
 ```
@@ -139,5 +160,10 @@ public class ThreadIdEnricher : ILogEventEnricher
                     })
 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
 ```
+دو
 ![My Remote Image](D:\github\Serilog_DotNet6\imgs\Annotation5.png)
+=======
+# coming soon set to kibana in docker ;)
+
+مین
 
